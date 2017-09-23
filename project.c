@@ -32,26 +32,21 @@ int aspect_ratio;
 int movie_facebook_likes;
 };
 
-
-void makelist(){ //initialize strcut 
-
-struct imdb *node=NULL;
-node = (struct imbd*)malloc(sizeof(struct imdb));
-imdb->duration=0;
-imdb->director_facebook_likes=0;
-imdb->actor_3_facebook_likes=0;
-imdb->actor_1_facebook_likes=0;
-imdb->gross=0;
-imdb->num_voted_users=0;
-imdb->cast_total_facebook_likes=0;
-imdb->facenumber_in_poster=0;
-imdb->num_user_for_reviews=0;
-imdb->budget=0;
-imdb->title_year=0;
-imdb->actor_2_facebook_likes=0;
-imdb->imdb_score=0;
-imdb->aspect_ratio=0;
-imdb->movie_facebook_likes=0;
+void tokenizer(char str[]){  
+const char delim[2]=",";
+char *arr;
+arr=strtok(str,delim);
+int i=0;
+char *final[5000];
+while(arr!=NULL){
+ final[i]=arr;
+ ++i;
+ arr=strtok(NULL,delim);
+}
+int j;
+for(j=0; j<i; ++j){
+ printf("%s\n", final[j]);
+}
 }
 
 
