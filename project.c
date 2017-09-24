@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct imdb{ //struct declaration 
 char* color;
@@ -32,12 +33,18 @@ int aspect_ratio;
 int movie_facebook_likes;
 };
 
-void tokenizer(char str[]){  
-const char delim[2]=",";
+
+char *final[5000]; //global array
+
+void tokenizer(char str[1000]){ 
+ 
+char delim[2]=",";
 char *arr;
-arr=strtok(str,delim);
+
+arr=(strtok(str,delim));
+
 int i=0;
-char *final[5000];
+
 while(arr!=NULL){
  final[i]=arr;
  ++i;
@@ -49,7 +56,6 @@ for(j=0; j<i; ++j){
 }
 }
 
-
 int main(int argc, char*argv[]){
 
 if(argc<=1){
@@ -57,7 +63,7 @@ printf("error\n");
 return 1;
 }
 
-char str[100]; int count=0; int i; int size=6000;
+char str[1000]; int count=0; int i; int size=6000;
 
 struct imdb* list[size]; //array of structs
 
@@ -65,11 +71,13 @@ while(scanf("%s", &str) !=EOF){
 
 if(count==0){ //first row of table: column names
 printf("column names");
-count=0;
+printf("\n");
+count++;
 continue;
 }
 
 
+tokenizer(str);
 
 list[count] = malloc(sizeof(struct imdb)); //initializng struct
 
@@ -102,7 +110,7 @@ list[count]->actor_2_facebook_likes;
 list[count]->imdb_score;
 list[count]->aspect_ratio;
 list[count]->movie_facebook_likes;
-}
+
 
 count++;
 
