@@ -50,10 +50,10 @@ while(arr!=NULL){
  ++i;
  arr=strtok(NULL,delim);
 }
-int j;
+/*int j;
 for(j=0; j<i; ++j){
  printf("%s\n", final[j]);
-}
+}*/
 }
 
 int main(int argc, char*argv[]){
@@ -63,11 +63,11 @@ printf("error\n");
 return 1;
 }
 
-char str[1000]; int count=0; int i; int size=6000;
+char str[1000]; int count=0; int i; int size=6000; int j;
 
 struct imdb* list[size]; //array of structs
 
-while(scanf("%s", &str) !=EOF){
+while(scanf("%[^\n]%*c", &str) !=EOF){
 
 if(count==0){ //first row of table: column names
 printf("column names");
@@ -111,6 +111,13 @@ list[count]->imdb_score;
 list[count]->aspect_ratio;
 list[count]->movie_facebook_likes;
 
+
+for(j=0; j<28; ++j){
+ printf("%s\n", final[j]);
+}
+
+printf("\n");
+printf("\n");
 
 count++;
 
