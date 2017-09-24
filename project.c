@@ -15,22 +15,22 @@ char* movie_imdb_link;
 char* language;
 char* country;
 char* content_rating;
-int num_critic_for_reviews;
-int duration;
-int director_facebook_likes;
-int actor_3_facebook_likes;
-int actor_1_facebook_likes;
-int gross;
-int num_voted_users;
-int cast_total_facebook_likes;
-int facenumber_in_poster;
-int num_user_for_reviews; 
-int budget;
-int title_year;
-int actor_2_facebook_likes;
-int imdb_score;
-int aspect_ratio;
-int movie_facebook_likes;
+char* num_critic_for_reviews;
+char* duration;
+char* director_facebook_likes;
+char* actor_3_facebook_likes;
+char* actor_1_facebook_likes;
+char* gross;
+char* num_voted_users;
+char* cast_total_facebook_likes;
+char* facenumber_in_poster;
+char* num_user_for_reviews; 
+char* budget;
+char* title_year;
+char* actor_2_facebook_likes;
+char* imdb_score;
+char* aspect_ratio;
+char* movie_facebook_likes;
 };
 
 
@@ -81,36 +81,34 @@ tokenizer(str);
 
 list[count] = malloc(sizeof(struct imdb)); //initializng struct
 
-list[count]->color;
-list[count]->director_name;
-list[count]->actor_2_name;
-list[count]->genres;
-list[count]->actor_1_name;
-list[count]->movie_title;
-list[count]->actor_3_name;
-list[count]->plot_keywords;
-list[count]->movie_imdb_link;
-list[count]->language;
-list[count]->country;
-list[count]->content_rating;
-
-list[count]->num_critic_for_reviews;
-list[count]->duration;
-list[count]->director_facebook_likes;
-list[count]->actor_3_facebook_likes;
-list[count]->actor_1_facebook_likes;
-list[count]->gross;
-list[count]->num_voted_users;
-list[count]->cast_total_facebook_likes;
-list[count]->facenumber_in_poster;
-list[count]->num_user_for_reviews; 
-list[count]->budget;
-list[count]->title_year;
-list[count]->actor_2_facebook_likes;
-list[count]->imdb_score;
-list[count]->aspect_ratio;
-list[count]->movie_facebook_likes;
-
+list[count]->color = final[0];
+list[count]->director_name = final[1];
+list[count]->num_critic_for_reviews = final[2];
+list[count]->duration = final[3];
+list[count]->director_facebook_likes = final[4];
+list[count]->actor_3_facebook_likes= final[5];
+list[count]->actor_2_name= final[6];
+list[count]->actor_1_facebook_likes= final[7];
+list[count]->gross= final[8];
+list[count]->genres= final[9];
+list[count]->actor_1_name= final[10];
+list[count]->movie_title= final[11];
+list[count]->num_voted_users= final[12];
+list[count]->cast_total_facebook_likes= final[13];
+list[count]->actor_3_name= final[14];
+list[count]->facenumber_in_poster= final[15];
+list[count]->plot_keywords= final[16];
+list[count]->movie_imdb_link= final[17];
+list[count]->num_user_for_reviews= final[18];
+list[count]->language= final[19];
+list[count]->country= final[20];
+list[count]->content_rating= final[21];
+list[count]->budget= final[22];
+list[count]->title_year= final[23];
+list[count]->actor_2_facebook_likes= final[24];
+list[count]->imdb_score= final[25];
+list[count]->aspect_ratio= final[26];
+list[count]->movie_facebook_likes= final[27];
 
 for(j=0; j<28; ++j){
  printf("%s\n", final[j]);
@@ -122,6 +120,8 @@ printf("\n");
 count++;
 
 }
+
+// printf("%s",list[2]->budget); //testing out structs
 
 return 0;
 
