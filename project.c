@@ -39,7 +39,7 @@ char *finals[1000]; //global array of strings
 
 int finali[100]; //global array of ints
 
-struct imdb* list[6000]; //array of structs
+char *dummy[6000]; 
 
 void tokenizer(char str[1000]){ 
  
@@ -101,7 +101,7 @@ for(i=0; i<sizeof(final); i++){
 
 }
 
-void initialize1(int count){
+void initialize1(struct imdb *list[],int count){
 list[count]->color = finals[0];
 list[count]->director_name = finals[1];
 list[count]->actor_2_name= finals[2];
@@ -117,7 +117,7 @@ list[count]->content_rating= finals[11];
 
 }
 
-void initialize2(int count){
+void initialize2(struct imdb* list[],int count){
 list[count]->num_critic_for_reviews = finali[0];
 list[count]->duration = finali[1];
 list[count]->director_facebook_likes = finali[2];
@@ -137,7 +137,7 @@ list[count]->movie_facebook_likes= finali[15];
 
 }
 
-void printlist(int count){
+void printlist(struct imdb *list[],int count){
 
 printf("%s\n",list[count]->color);
 printf("%s\n",list[count]->director_name);
@@ -181,7 +181,7 @@ printf("error\n");
 return 1;
 }
 
-char str[1000]; int count=0; int i; int j; int ii;
+char str[1000];  int count=0; int i; int j; int ii; int k;
 int ss;
 
 while(scanf("%[^\n]%*c", &str) !=EOF){
@@ -193,7 +193,42 @@ count++;
 continue;
 }
 
-tokenizer(str);
+
+dummy[count] = strdup(str);
+printf("%d count rn: \n",count);
+printf("%s\n",dummy[count]);
+
+count++;
+
+printf("\n");
+printf("\n");
+
+} //end of while loop
+
+
+count=count-1; //lines in an array
+printf("%d",count); 
+printf("%s\n",dummy[1]);
+
+struct imdb* list[count]; //create array of structs
+
+
+char*temp;
+
+for(k=1; k <= count; k++){
+
+temp = dummy[k];
+
+tokenizer(temp);
+token1();
+
+list[k] = malloc(sizeof(struct imdb));
+initialize1(list,k);
+initialize2(list,k);
+printlist(list,k);
+
+}
+/*
 printf("hello");
 token1();
 
@@ -217,15 +252,8 @@ list[count] = malloc(sizeof(struct imdb)); //initializng struct
 initialize1(count);
 initialize2(count);
 printf("HELLLLOOOOO FRIENDDDDD");
-printlist(count);
+printlist(count);*/
 
-count++;
-
-
-printf("\n");
-printf("\n");
-
-}
 
 
 
